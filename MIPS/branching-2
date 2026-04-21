@@ -1,0 +1,33 @@
+.text
+li $s0 3 #x
+li $s1 3 #y
+
+beq $s0 $s1 GoHereIfEqual
+li $v0 1
+li $a0 0
+syscall
+
+j AfterIf
+
+GoHereIfEqual:
+li $t0 1
+li $v0 1
+move $a0 $t0
+syscall
+
+AfterIf:
+
+
+li $s0 0 # i
+li $s1 5 # limit
+While:
+beq $s0 $s1 AfterWhile
+
+li $v0 1
+move $a0 $s0
+syscall #print i
+addi $s0 $s0 1 #i++
+j While
+
+
+AfterWhile:

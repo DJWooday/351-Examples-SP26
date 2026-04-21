@@ -6,8 +6,8 @@
 #define CLASSES_1_RECTANGLE_H
 
 class Rectangle {
-    float width, height;
 public:
+    float width, height;
     Rectangle();
     Rectangle(float, float);
     void setVals(float w, float h) {

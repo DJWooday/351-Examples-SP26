@@ -15,6 +15,7 @@ class Cube {
     Cube();
     ~Cube();
     Cube(const Cube& existing);
+    Cube& operator=(const Cube& rhs);
 };
 
 

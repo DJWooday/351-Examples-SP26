@@ -11,9 +11,11 @@ class Cube {
 public:
     Rectangle* base;
     float depth;
+    Cube() {};
     Cube(Rectangle* b, float d);
     ~Cube();
     Cube(const Cube&);
+    Cube& operator=(const Cube&);
 };
 
 
