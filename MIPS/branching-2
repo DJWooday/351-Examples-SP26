@@ -1,3 +1,6 @@
+.data
+arr: .word 1 2 3 4 5
+
 .text
 li $s0 3 #x
 li $s1 3 #y
@@ -31,3 +34,44 @@ j While
 
 
 AfterWhile:
+
+li $s0 1000000
+li $s1 5000000
+mult $s0 $s1
+
+li $s0 9
+li $s1 4
+div $s0 $s1
+
+mfhi $a0
+li $v0 1
+syscall
+
+
+
+
+la $s6 arr # array addr
+li $s5 5 # len
+li $s3 0 # i
+li $s0 0 # sum
+
+SumLoopStart:
+beq $s3 $s5 LoopExit
+
+sll $t1 $s3 2 # i * 4
+add $t1 $t1 $s6 # t1 = offset + start addr
+lw $t0 0($t1) # t0 = arr[i]
+
+add $s0 $s0 $t0 # sum += arr[i]
+
+addi $s3 $s3 1
+j SumLoopStart
+
+LoopExit:
+
+move $a0 $s0
+li $v0 1
+syscall
+
+bgt $t0 $t1 LoopExit
+

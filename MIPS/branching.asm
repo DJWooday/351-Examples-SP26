@@ -63,4 +63,4 @@ li $v0 1
 move $a0 $s7
 syscall
 
-
+bgt $s1 $s2 SumLoopExit
